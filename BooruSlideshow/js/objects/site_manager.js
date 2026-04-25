@@ -205,14 +205,13 @@ class SiteManager
 			console.log(e);
 			return;
 		}
-		
-		if (this.id == SITE_DERPIBOORU)
+
+		jsonPosts = this.extractPostsFromResponse(jsonPosts);
+
+		if (!Array.isArray(jsonPosts))
 		{
-			jsonPosts = jsonPosts["images"];
-		}
-		else if (this.id == SITE_E621)
-		{
-			jsonPosts = jsonPosts["posts"]
+			console.log("extractPostsFromResponse() did not return an array.");
+			return;
 		}
 		
 		this.hasExhaustedSearch = (jsonPosts.length < this.pageLimit);
@@ -225,6 +224,15 @@ class SiteManager
 
 			this.addSlide(jsonPost);
 		}
+	}
+
+	/**
+	 * Override in subclasses to pull the posts array out of the raw parsed JSON.
+	 * The default implementation assumes the response is already the array.
+	 */
+	extractPostsFromResponse(jsonResponse)
+	{
+		return jsonResponse;
 	}
 
 	addSlide(jsonOrXmlPost)

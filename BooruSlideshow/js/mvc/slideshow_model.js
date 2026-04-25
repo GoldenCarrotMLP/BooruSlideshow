@@ -17,7 +17,8 @@ class SlideshowModel{
             [SITE_RULE34]: false,
             [SITE_SAFEBOORU]: true,
             [SITE_XBOORU]: false,
-            [SITE_YANDERE]: false
+            [SITE_YANDERE]: false,
+            [SITE_TWITTER]: false
         };
 
         this.secondsPerSlide = 6;
@@ -37,6 +38,7 @@ class SlideshowModel{
         this.e621ApiKey = ''
         this.gelbLoginId = ''
         this.gelbApiKey = ''
+        this.twitterBearerToken = ''
         this.storeHistory = true;
         this.searchHistory = [];
 
@@ -69,6 +71,7 @@ class SlideshowModel{
         this.e621ApiKeyUpdatedEvent = new Event(this);
         this.gelbUserIdUpdatedEvent = new Event(this);
         this.gelbApiKeyUpdatedEvent = new Event(this);
+        this.twitterBearerTokenUpdatedEvent = new Event(this);
         this.storeHistoryUpdatedEvent = new Event(this);
         this.searchHistoryUpdatedEvent = new Event(this);
         this.favoriteButtonUpdatedEvent = new Event(this);
@@ -97,6 +100,7 @@ class SlideshowModel{
         this.sitesManager.addSite(SITE_SAFEBOORU, standardPageLimit);
         this.sitesManager.addSite(SITE_XBOORU, standardPageLimit);
         this.sitesManager.addSite(SITE_YANDERE, standardPageLimit);
+        this.sitesManager.addSite(SITE_TWITTER, standardPageLimit);
     }
 
     async loadUserSettings()
@@ -628,6 +632,15 @@ class SlideshowModel{
         this.dataLoader.saveGelbApiKey();
 
         this.gelbApiKeyUpdatedEvent.notify();
+    }
+
+    setTwitterBearerToken(twitterBearerToken)
+    {
+        this.twitterBearerToken = twitterBearerToken;
+
+        this.dataLoader.saveTwitterBearerToken();
+
+        this.twitterBearerTokenUpdatedEvent.notify();
     }
 
     setStoreHistory(onOrOff)

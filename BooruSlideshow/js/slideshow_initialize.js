@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'gelbApiKeyContainer': document.getElementById('gelb-api-key-container'),
         'gelbUserId': document.getElementById('gelb-userid'),
         'gelbApiKey': document.getElementById('gelb-api-key'),
+        'twitterBearerTokenContainer': document.getElementById('twitter-bearer-token-container'),
+        'twitterBearerToken': document.getElementById('twitter-bearer-token'),
         'storeHistoryCheckBox': document.getElementById('store-history'),
         'clearHistoryButton': document.getElementById('clear-history'),
         'searchHistory': document.getElementById('search-history'),

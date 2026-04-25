@@ -42,6 +42,7 @@ class DataLoader
         var storeHistory = obj['storeHistory'];
         var searchHistory = obj['searchHistory'];
         var includeDupes = obj['includeDupes'];
+        var twitterBearerToken = obj['twitterBearerToken'];
         var personalListItems = obj['personalListItems'];
         
         if (videoVolume == null)
@@ -95,7 +96,7 @@ class DataLoader
         {
             if (sitesToSearch != null)
             {
-                let cleanSitesToSearch = Object.assign({}, _this.sitesToSearch);
+                let cleanSitesToSearch = Object.assign({}, _this._model.sitesToSearch);
 
                 _this.addPropertyIfExists(sitesToSearch, cleanSitesToSearch, SITE_DANBOORU);
                 _this.addPropertyIfExists(sitesToSearch, cleanSitesToSearch, SITE_DERPIBOORU);
@@ -106,6 +107,7 @@ class DataLoader
                 _this.addPropertyIfExists(sitesToSearch, cleanSitesToSearch, SITE_SAFEBOORU);
                 _this.addPropertyIfExists(sitesToSearch, cleanSitesToSearch, SITE_XBOORU);
                 _this.addPropertyIfExists(sitesToSearch, cleanSitesToSearch, SITE_YANDERE);
+                _this.addPropertyIfExists(sitesToSearch, cleanSitesToSearch, SITE_TWITTER);
 
                 _this._model.setSitesToSearch(cleanSitesToSearch);
             }
@@ -187,6 +189,11 @@ class DataLoader
             {
                 _this._model.setGelbApiKey(gelbApiKey);
             }
+
+            if (twitterBearerToken != null && _this._model.twitterBearerToken != twitterBearerToken)
+            {
+                _this._model.setTwitterBearerToken(twitterBearerToken);
+            }
             
             if (storeHistory != null)
             {
@@ -241,6 +248,7 @@ class DataLoader
             'storeHistory',
             'searchHistory',
             'includeDupes',
+            'twitterBearerToken',
             'personalListItems'
         ];
 
@@ -384,6 +392,11 @@ class DataLoader
     saveIncludeDupes()
     {
         chrome.storage.sync.set({'includeDupes': this._model.includeDupes});
+    }
+
+    saveTwitterBearerToken()
+    {
+        chrome.storage.sync.set({'twitterBearerToken': this._model.twitterBearerToken});
     }
 
     savePersonalList(items)

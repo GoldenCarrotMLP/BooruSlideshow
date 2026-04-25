@@ -73,6 +73,12 @@
 						<li><label><input type="checkbox" name="sites-to-search" value="SAFE" />safebooru.org</label></li>
 						<li><label><input type="checkbox" name="sites-to-search" value="XBOO" />xbooru.com</label></li>
 						<li><label><input type="checkbox" name="sites-to-search" value="YAND" />yande.re</label></li>
+						<li><label><input type="checkbox" name="sites-to-search" value="TWIT" />twitter.com / x.com</label></li>
+						<li id="twitter-bearer-token-container">
+							<span><a href="https://developer.twitter.com/en/portal/dashboard" target="_blank">(get Bearer Token here)</a></span><br />
+							<label><input type="password" id="twitter-bearer-token" placeholder="Twitter Bearer Token" /></label>
+							<p class="note">Search by username, e.g. <i>@someartist</i></p>
+						</li>
 						<li class="note">Red sites are offline</li>
 					</ul>
 				</div>
@@ -189,6 +195,7 @@
 		<script src="js/objects/site_managers/site_manager_safebooru.js"></script>
 		<script src="js/objects/site_managers/site_manager_xbooru.js"></script>
 		<script src="js/objects/site_managers/site_manager_yandere.js"></script>
+		<script src="js/objects/site_managers/site_manager_twitter.js"></script>
 		<script src="js/objects/site_manager_factory.js"></script>
 		<script src="js/objects/sites_manager.js"></script>
 		<script src="js/objects/slide.js"></script>

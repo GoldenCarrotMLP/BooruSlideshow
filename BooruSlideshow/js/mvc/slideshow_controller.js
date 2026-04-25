@@ -148,6 +148,10 @@ class SlideshowController
             _this.gelbApiKeyChanged();
         });
 
+        this._view.twitterBearerTokenChangedEvent.attach(function () {
+            _this.twitterBearerTokenChanged();
+        });
+
         this._view.storeHistoryChangedEvent.attach(function () {
             _this.storeHistoryChanged();
         });
@@ -436,6 +440,13 @@ class SlideshowController
         var gelbApiKey = this._view.getGelbApiKey();
 
         this._model.setGelbApiKey(gelbApiKey);
+    }
+
+    twitterBearerTokenChanged()
+    {
+        var twitterBearerToken = this._view.getTwitterBearerToken();
+
+        this._model.setTwitterBearerToken(twitterBearerToken);
     }
 
     storeHistoryChanged()

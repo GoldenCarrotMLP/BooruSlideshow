@@ -64,6 +64,11 @@ class SiteManagerDerpibooru extends SiteManager
 		return (text.substring(0,term.length) == term);
 	}
 
+	extractPostsFromResponse(jsonResponse)
+	{
+		return jsonResponse["images"];
+	}
+
 	doesResponseTextIndicateOnline(responseText)
 	{
 		var jsonPosts;
@@ -79,8 +84,7 @@ class SiteManagerDerpibooru extends SiteManager
 			return false;
 		}
 		
-		// Derpibooru-only line
-		jsonPosts = jsonPosts["posts"];
+		jsonPosts = jsonPosts["images"];
 		
 		if (jsonPosts == null)
 			return false;

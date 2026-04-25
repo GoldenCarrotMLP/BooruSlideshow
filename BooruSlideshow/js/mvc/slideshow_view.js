@@ -38,6 +38,7 @@ class SlideshowView
         this.e621ApiKeyChangedEvent = new Event(this);
         this.gelbUserIdChangedEvent = new Event(this);
         this.gelbApiKeyChangedEvent = new Event(this);
+        this.twitterBearerTokenChangedEvent = new Event(this);
         this.storeHistoryChangedEvent = new Event(this);
         this.clearHistoryClickedEvent = new Event(this);
         this.favoriteKeyPressedEvent = new Event(this);
@@ -151,6 +152,10 @@ class SlideshowView
             _this.updateGelbApiKey();
         });
 
+        this._model.twitterBearerTokenUpdatedEvent.attach(function () {
+            _this.updateTwitterBearerToken();
+        });
+
         this._model.storeHistoryUpdatedEvent.attach(function () {
             _this.updateStoreHistory();
         });
@@ -255,7 +260,8 @@ class SlideshowView
                 document.activeElement !== _this.uiElements.e621Login &&
                 document.activeElement !== _this.uiElements.e621ApiKey &&
                 document.activeElement !== _this.uiElements.gelbUserId &&
-                document.activeElement !== _this.uiElements.gelbApiKey
+                document.activeElement !== _this.uiElements.gelbApiKey &&
+                document.activeElement !== _this.uiElements.twitterBearerToken
                 ) {
                 
                 if (key == LEFT_ARROW_KEY_ID || key == A_KEY_ID)
@@ -398,6 +404,10 @@ class SlideshowView
 
         this.uiElements.gelbApiKey.addEventListener('change', function () {
             _this.gelbApiKeyChangedEvent.notify();
+        });
+
+        this.uiElements.twitterBearerToken.addEventListener('change', function () {
+            _this.twitterBearerTokenChangedEvent.notify();
         });
 
         this.uiElements.storeHistoryCheckBox.addEventListener('change', function () {
@@ -908,6 +918,11 @@ class SlideshowView
                 this.uiElements.gelbUserIdContainer.style.display = checked ? 'inline' : 'none';
                 this.uiElements.gelbApiKeyContainer.style.display = checked ? 'inline' : 'none';
             }
+
+            if (site == SITE_TWITTER)
+            {
+                this.uiElements.twitterBearerTokenContainer.style.display = checked ? 'block' : 'none';
+            }
         }
     }
 
@@ -1123,6 +1138,14 @@ class SlideshowView
 
     updateGelbApiKey() {
         this.uiElements.gelbApiKey.value = this._model.gelbApiKey;
+    }
+
+    getTwitterBearerToken() {
+        return this.uiElements.twitterBearerToken.value.trim();
+    }
+
+    updateTwitterBearerToken() {
+        this.uiElements.twitterBearerToken.value = this._model.twitterBearerToken;
     }
 
     openUrlInNewWindow(url) {

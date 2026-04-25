@@ -20,8 +20,10 @@ class SiteManagerFactory
 				return new SiteManagerSafebooru(sitesManager, pageLimit);
 			case SITE_XBOORU:
 				return new SiteManagerXbooru(sitesManager, pageLimit);
-				case SITE_YANDERE:
+			case SITE_YANDERE:
 				return new SiteManagerYandere(sitesManager, pageLimit);
+			case SITE_TWITTER:
+				return new SiteManagerTwitter(sitesManager, pageLimit);
 			default:
                 console.log('SiteManagerFactory cannot handle the supplied site ID: ' + id);
                 return;

@@ -38,6 +38,11 @@ class SiteManagerE621 extends SiteManager
 		return (jsonPosts.posts.length > 0);
 	}
 
+	extractPostsFromResponse(jsonResponse)
+	{
+		return jsonResponse["posts"];
+	}
+
 	addSlides(responseText)
 	{
 		this.addJsonSlides(responseText);

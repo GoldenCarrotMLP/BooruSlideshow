@@ -48,7 +48,10 @@
 		"https://rule34.xxx/*",
 		"https://safebooru.org/*",
 		"https://xbooru.com/*",
-		"https://yande.re/*"
+		"https://yande.re/*",
+		"https://api.twitter.com/*",
+		"https://pbs.twimg.com/*",
+		"https://video.twimg.com/*"
 	],
 	"declarative_net_request" :
 	{
